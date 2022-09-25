@@ -1,0 +1,11 @@
+header.main-header{
+    background-color: #EC4531 !important; 
+}
+
+a {
+    color: #fff;
+}
+
+.navbar-nav a {
+    font-weight: bold;
+}

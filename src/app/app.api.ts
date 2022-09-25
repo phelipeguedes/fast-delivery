@@ -1,0 +1,1 @@
+export const API_MEAT = 'https://localhost:3001'

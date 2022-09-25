@@ -1,0 +1,16 @@
+<div class="form-group" [class.hasSuccess]="displayMsgSuccess()" [class.hasError]="displayMsgError()">
+
+  <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i>{{ label }}</label>
+
+  <!-- <input type="text" class="form-control" name="input" #input="ngModel" ngModel id="inputSuccess" minlength="5"
+    required placeholder="Endereço"> -->
+
+  <ng-content></ng-content>
+
+  <span class="help-block" *ngIf="displayMsgSuccess()" style="color: green"><i class="fa fa-check"></i> Ok
+  </span>
+
+  <span class="help-block" *ngIf="displayMsgError()" style="color: red"><i class="fa fa-remove"></i> {{ msgError }}
+  </span>
+  
+</div>
