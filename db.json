@@ -12,11 +12,11 @@
     },
     {
       "id": "burger-house",
-      "name": "Burger House",
-      "category": "Hamburgers",
+      "name": "My Burger",
+      "category": "Hamburgers and Others Delicious",
       "deliveryEstimate": "100m",
       "rating": 3.5,
-      "imagePath": "assets/img/restaurants/meat-burger.jpg",
+      "imagePath": "assets/img/restaurants/hamburguer.jpg",
       "about": "40 anos se especializando em trash food.",
       "hours": "Funciona todos os dias, de 10h às 22h"
     },
@@ -46,7 +46,7 @@
       "category": "Ice Creams",
       "deliveryEstimate": "40-65m",
       "rating": 4.5,
-      "imagePath": "assets/img/restaurants/1000_F_79883273_LTrdhAyXPxskSCUEDkso5EkoLonYWo5i.jpg",
+      "imagePath": "assets/img/restaurants/sorveteria.jpg",
       "about": "A Cold Ice Cream é mais nova sorveteria da cidade. Com uma variedade enorme de sabores",
       "hours": "Funciona todos os dias, de 10h às 1h"
     },
