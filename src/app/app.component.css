@@ -1,0 +1,18 @@
+ul {
+    list-style: none;
+}
+
+/* ul.social-media {
+    display: inline-flex;
+} */
+
+.pull-right > a {
+    color: gray;
+    padding: 2px;
+}
+
+footer {
+    height: auto;
+}
+
+
