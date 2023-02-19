@@ -5,5 +5,8 @@ Sistema de delivery de refeições construído com front-end em Angular, como fo
 
 ![Screenshot from 2022-09-26 00-17-13](https://user-images.githubusercontent.com/16988157/192187160-6700c5b1-695f-4d5f-9c86-adfeaf57925d.png)
 
+![Captura de tela de 2023-02-19 18-50-51](https://user-images.githubusercontent.com/16988157/219978210-6648855a-3759-43da-b8cd-6ccf432e1f5d.png)
+
+
 
 
