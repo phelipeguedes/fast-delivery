@@ -1,8 +1,6 @@
 import { Routes } from "@angular/router";
-import { AboutComponent } from "./about/about.component";
 import { HomeComponent } from "./home/home.component";
 import { OrderDetailComponent } from "./order/order-detail/order-detail.component";
-import { OrderComponent } from "./order/order.component";
 import { MenuComponent } from "./restaurant-detail/menu/menu.component";
 import { RestaurantDetailComponent } from "./restaurant-detail/restaurant-detail.component";
 import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
@@ -18,8 +16,9 @@ export const ROUTES: Routes = [
             {path: 'menu', component: MenuComponent},
             {path: 'reviews', component: ReviewsComponent}
         ]},
-    {path: 'about', component: AboutComponent},
-    {path: 'order', component: OrderComponent},
     {path: 'order-success-detail', component: OrderDetailComponent},
-    {path: 'rate', component: RatingComponent}
+    {path: 'rate', component: RatingComponent},
+    /* "about" e "order" serão carregados pelo lazy-loading. o path aponta p/ os módulos deles */
+    {path: 'about', loadChildren: './about/about.module#AboutModule'},
+    {path: 'order', loadChildren: './order/order.module#OrderModule'}
 ]
