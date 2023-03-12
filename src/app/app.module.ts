@@ -37,6 +37,7 @@ import { MarketsComponent } from './markets/markets.component';
 import { MarketComponent } from './markets/market/market.component';
 import { ItemSearchComponent } from './search/item-search/item-search.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
     MarketsComponent,
     MarketComponent,
     ItemSearchComponent,
-    StoreDetailComponent
+    StoreDetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
