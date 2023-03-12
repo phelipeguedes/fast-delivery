@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, RequestOptions, Headers } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 import { ItemCart } from "app/restaurant-detail/shopping-cart/item-cart.model";
 import { ShoppingCartService } from "app/restaurant-detail/shopping-cart/shopping-cart.service";
 import { Order } from "./order.model";
@@ -7,12 +7,13 @@ import { API_MEAT } from '../app.api'
 import { Observable } from "rxjs/Observable";
 import { Router } from "@angular/router";
 import { OrderDetailComponent } from "./order-detail/order-detail.component";
+import { map } from "rxjs/internal/operators/map";
 
 
 @Injectable()
 export class OrderService {
 
-    constructor(private shoppingCartService: ShoppingCartService, private http: Http, private route: Router) {
+    constructor(private shoppingCartService: ShoppingCartService, private http: HttpClient, private route: Router) {
 
     }
 
@@ -38,16 +39,10 @@ export class OrderService {
         return this.shoppingCartService.sumTotalToPay();
     }
 
-    checkOrder(order: Order): Observable<string>{
-        const headers = new Headers();
-
-        headers.append('Content-Type', 'application/json');
-
+    checkOrder(order: Order): Observable<string>{        
         // salvando a compra. Transforma o obj compra em json e salva no banco
-        return this.http.post(`${API_MEAT}/orders`, JSON.stringify(order),
-                    new RequestOptions({headers: headers}))
-                    .map(result=>result.json())
-                    .map(order => order.id);                    
+        return this.http.post<Order>(`${API_MEAT}/orders`, order)                    
+                .pipe(map(order => order.id));                    
     }
 
     clearCartAfterComplete() {

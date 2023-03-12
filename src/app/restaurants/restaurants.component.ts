@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Restaurant } from './restaurant/restaurant.model';
-import { RestaurantService } from './restaurants.service';
+import { Store } from 'app/models/store.model';
+
+import { StoreService } from 'app/services/store.service';
 
 @Component({
   selector: 'mt-restaurants',
@@ -8,15 +9,18 @@ import { RestaurantService } from './restaurants.service';
 })
 export class RestaurantsComponent implements OnInit {
 
-  restaurants: Restaurant[];
+  restaurants: Store[];  
 
-  constructor(private restaurantService: RestaurantService) { }
+  constructor(private storeService: StoreService) { }
 
   ngOnInit() {
-    
-    this.restaurantService.restaurants().subscribe(restaurants => {    
-        console.log(restaurants);
-        this.restaurants = restaurants;
+    this.getRestaurants();    
+  }
+
+  getRestaurants() {    
+    this.storeService.getRestaurants().subscribe(restaurants => {    
+      console.log(restaurants);
+      this.restaurants = restaurants;
     });
   }
 

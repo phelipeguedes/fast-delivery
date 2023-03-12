@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RestaurantService } from 'app/restaurants/restaurants.service';
+import { StoreService } from 'app/services/store.service';
 import { Observable } from 'rxjs/Observable';
 import { ItemMenu } from '../item-menu/item-menu.model';
 
@@ -12,13 +12,11 @@ export class MenuComponent implements OnInit {
 
   menu: Observable<ItemMenu[]>;
   
-  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute) { }
+  constructor(private storeService: StoreService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-  
-    this.menu = this.restaurantService.showMenuRestaurant(this.route.parent.snapshot.params['id']);
+    this.menu = this.storeService.showMenuStore(this.route.parent.snapshot.params['id']);
     console.log(this.menu);
-  
   }
 
   addItemMenu(item: ItemMenu) {

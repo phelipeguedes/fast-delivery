@@ -1,5 +1,5 @@
 header.main-header{
-    background-color: #C53A2F !important; 
+    background-color: #CE181E !important; 
 }
 
 a {
@@ -9,3 +9,27 @@ a {
 .navbar-nav a {
     font-weight: bold;
 }
+
+.navbar-nav .search-container {
+    float: right;
+    margin: 2px 0px 0px 15px;
+}
+
+.navbar-nav input[type=search] {
+    padding: 6px;
+    margin-top: 8px;
+    border: none;
+    width: 260px;
+}
+
+.navbar-nav .search-container a {
+    float: left;
+    padding: 6px 10px;
+    margin-top: -34px;
+    margin-left: 260px;
+    cursor: pointer;    
+}
+
+
+
+
