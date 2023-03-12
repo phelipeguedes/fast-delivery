@@ -3,6 +3,7 @@ import { BakeriesComponent } from "./bakeries/bakeries.component";
 import { DrinksComponent } from "./drinks/drinks.component";
 import { HomeComponent } from "./home/home.component";
 import { MarketsComponent } from "./markets/markets.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 import { OrderDetailComponent } from "./order/order-detail/order-detail.component";
 import { MenuComponent } from "./restaurant-detail/menu/menu.component";
 import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
@@ -55,6 +56,7 @@ export const ROUTES: Routes = [
             {path: 'reviews', component: ReviewsComponent}
         ]
     },
+    {path: '**', component: NotFoundComponent},
  
     {path: 'order-success-detail', component: OrderDetailComponent},
     {path: 'rate', component: RatingComponent},
