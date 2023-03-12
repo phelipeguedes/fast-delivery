@@ -1,5 +1,5 @@
-# meals-delivery
-Sistema de delivery de refeições construído com front-end em Angular. Nele é possível consultar diferentes opções de restaurantes, padarias, hamburguerias, dentre outros; fazer um pedido, realizar o pagamento, cadastrar endereço de entraga, etc. No back-end, foi utilizado o json-server.
+# fast-delivery
+Sistema de delivery de refeições, bebidas, mercado e outros, construído com Angular. Nele é possível consultar diferentes opções de estabelecimentos, fazer um pedido, realizar o pagamento, cadastrar endereço de entrega, etc. No back-end, foi utilizado o json-server (base com dados estáticos).
 
 - Após clonar o projeto, para executá-lo, o comando "npm install" deve ser executado na raíz do projeto.
 
