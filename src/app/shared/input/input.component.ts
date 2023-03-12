@@ -1,6 +1,5 @@
 import { AfterContentInit, Component, ContentChild, Input, OnInit } from '@angular/core';
 import { FormControlName, NgModel } from '@angular/forms';
-import { ContentType } from '@angular/http/src/enums';
 import { OrderComponent } from 'app/order/order.component';
 
 @Component({
