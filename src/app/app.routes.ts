@@ -56,11 +56,12 @@ export const ROUTES: Routes = [
             {path: 'reviews', component: ReviewsComponent}
         ]
     },
-    {path: '**', component: NotFoundComponent},
  
     {path: 'order-success-detail', component: OrderDetailComponent},
     {path: 'rate', component: RatingComponent},
     /* "about" e "order" serão carregados pelo lazy-loading. o path aponta p/ os módulos deles */
     {path: 'about', loadChildren: './about/about.module#AboutModule'},
-    {path: 'order', loadChildren: './order/order.module#OrderModule'}
+    {path: 'order', loadChildren: './order/order.module#OrderModule'},
+
+    {path: '**', component: NotFoundComponent}
 ]
