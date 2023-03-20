@@ -1,5 +1,5 @@
 header.main-header{
-    background-color: #CE181E !important; 
+    background-color: #CE181E !important;
 }
 
 a {
@@ -27,9 +27,17 @@ a {
     padding: 6px 10px;
     margin-top: -34px;
     margin-left: 260px;
-    cursor: pointer;    
+    cursor: pointer;
 }
 
+.right-icon {
+  float: right !important;
+}
 
+.right-icon > .glyphicon {
+  position: absolute;
+  margin: 8px 15px;
+  cursor: pointer;
+}
 
 

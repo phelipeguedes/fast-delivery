@@ -9,6 +9,7 @@ import { RatingComponent } from "./rating/rating.component";
 import { OrderService } from "app/order/order.service";
 import { ShoppingCartService } from "app/restaurant-detail/shopping-cart/shopping-cart.service";
 import { StoreService } from "app/services/store.service";
+import { LoginService } from "app/services/login.service";
 
 @NgModule({
     declarations: [InputComponent, RadioComponent, RatingComponent],
@@ -22,6 +23,6 @@ o shared module tem a opção de ser importado só com os módulos (SharedModule
 de acordo com a necessidade da funcionalidade da aplicação */
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
-        return {ngModule: SharedModule, providers: [ShoppingCartService, StoreService, OrderService]}
+        return {ngModule: SharedModule, providers: [ShoppingCartService, StoreService, OrderService, LoginService]}
     }
 }
