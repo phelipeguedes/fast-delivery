@@ -37,6 +37,7 @@ import { MarketsComponent } from './markets/markets.component';
 import { MarketComponent } from './markets/market/market.component';
 import { ItemSearchComponent } from './search/item-search/item-search.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
+import { LoginComponent } from './security/login/login.component'
 import { NotFoundComponent } from './not-found/not-found.component';
 
 
@@ -63,7 +64,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MarketComponent,
     ItemSearchComponent,
     StoreDetailComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { LoginComponent } from './security/login/login.component';
 import { Routes } from "@angular/router";
 import { BakeriesComponent } from "./bakeries/bakeries.component";
 import { DrinksComponent } from "./drinks/drinks.component";
@@ -56,12 +57,13 @@ export const ROUTES: Routes = [
             {path: 'reviews', component: ReviewsComponent}
         ]
     },
- 
+
     {path: 'order-success-detail', component: OrderDetailComponent},
     {path: 'rate', component: RatingComponent},
     /* "about" e "order" serão carregados pelo lazy-loading. o path aponta p/ os módulos deles */
     {path: 'about', loadChildren: './about/about.module#AboutModule'},
     {path: 'order', loadChildren: './order/order.module#OrderModule'},
+    {path: 'login', component: LoginComponent},
 
     {path: '**', component: NotFoundComponent}
 ]
