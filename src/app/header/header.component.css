@@ -24,20 +24,32 @@ a {
 
 .navbar-nav .search-container a {
     float: left;
-    padding: 6px 10px;
+    padding: 6px 100px;
     margin-top: -34px;
-    margin-left: 260px;
+    margin-left: 0px;
     cursor: pointer;
 }
 
-.right-icon {
-  float: right !important;
+/* .right-icon {
+  display: flex;
+  align-content: end;
+  justify-content: end;
+
 }
 
-.right-icon > .glyphicon {
-  position: absolute;
-  margin: 8px 15px;
+.right-icon > span {
+  position: relative;
+  display: block;
+  /* margin-left: 320px;
+  left: 100%;
+  pointer-events:all;
   cursor: pointer;
+} */
+
+.link-to-login {
+    display:none;
 }
+
+
 
 

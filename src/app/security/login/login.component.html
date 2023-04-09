@@ -56,6 +56,10 @@
                         <a [routerLink]="['/cadastrar-usuario']">CADASTRE-SE</a>
                     </div>
                 </div>
+
+                <div class="row">
+                  <div class="message-login-container" *ngIf="errorMessage !== undefined">{{ erro }}</div>
+                </div>
             </div>
         </div>
     </div>
