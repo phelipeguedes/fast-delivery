@@ -12,17 +12,17 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
-          <li routerLinkActive="active"><a [routerLink]="['/restaurants']">Restaurantes</a></li>
-          <li routerLinkActive="active"><a [routerLink]="['/drinks']">Bebidas</a></li>
-          <li routerLinkActive="active"><a [routerLink]="['/bakeries']">Padarias</a></li>
-          <li routerLinkActive="active"><a [routerLink]="['/markets']">Mercado</a></li>
-          <li routerLinkActive="active"><a [routerLink]="['/about']">Quem somos</a></li>
-          <mt-search></mt-search>
-          <a [routerLink]="['/login']" class="right-icon">
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-          </a>
+          <li><a [routerLink]="['/restaurants']">Restaurantes</a></li>
+          <li><a [routerLink]="['/drinks']">Bebidas</a></li>
+          <li><a [routerLink]="['/bakeries']">Padarias</a></li>
+          <li><a [routerLink]="['/markets']">Mercado</a></li>
+          <li><a [routerLink]="['/about']">Quem somos</a></li>
+          
+          <mt-search></mt-search>          
         </ul>
       </div>
+
+      <mt-link-login></mt-link-login>
       <!-- /.navbar-collapse -->
     </div>
   </nav>

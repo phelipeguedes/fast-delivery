@@ -720,6 +720,22 @@
       "email": "camila.barbosa@email.com",
       "password": "123456",
       "id": 12
+    },
+    {
+      "name": "Alice Freitas",
+      "address": "Rua x",
+      "number": "10",
+      "complement": "",
+      "email": "alice_freitas@email.com",
+      "emailConfirm": "alice_freitas@email.com",
+      "paymentOptions": "pix",
+      "item": [
+        {
+          "id": "starb",
+          "qtdItems": 1
+        }
+      ],
+      "id": 13
     }
   ],
   "login": []

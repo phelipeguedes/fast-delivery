@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ErrorHandler } from "../app.error-handler";
+import { AppErrorHandler } from "../app.error-handler";
 
 import { API_MEAT, APP_URL } from "app/app.api";
 import { ItemSearch } from 'app/search/item-search/item-search.model';

@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ItemCart } from "app/restaurant-detail/shopping-cart/item-cart.model";
 import { ShoppingCartService } from "app/restaurant-detail/shopping-cart/shopping-cart.service";
 import { Order } from "./order.model";
@@ -14,7 +14,6 @@ import { map } from "rxjs/internal/operators/map";
 export class OrderService {
 
     constructor(private shoppingCartService: ShoppingCartService, private http: HttpClient, private route: Router) {
-
     }
 
     itemsCart(): ItemCart[] {
@@ -40,7 +39,6 @@ export class OrderService {
     }
 
     checkOrder(order: Order): Observable<string>{        
-        // salvando a compra. Transforma o obj compra em json e salva no banco
         return this.http.post<Order>(`${API_MEAT}/orders`, order)                    
                 .pipe(map(order => order.id));                    
     }

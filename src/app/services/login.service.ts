@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/filter';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +14,39 @@ import 'rxjs/add/operator/do';
 export class LoginService {
 
   user: User;
+  lastUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { 
+    
+    /* última url visitada, é utilizada para quando entrar e sair da aplicação */
+    this.router.events.filter(event => event instanceof NavigationEnd)
+                      .subscribe((event: NavigationEnd) => this.lastUrl = event.url);
+  }
 
-  getCurrentUser() {
+  login(username, password):Observable<User> {
+        return this.http.post<User>(`${API_MEAT}/login`, {
+              username: username,
+              password: password
+        })
+        .do(user => this.user = user); // usuário logado
+  }
+
+  // usuário logado
+  getLoggedUser(): User {
+    if(!this.user) {
+      return undefined
+    }
+      
     return this.user;
   }
 
-  login(username, password):Observable<User>{
-          return this.http.post<User>(`${API_MEAT}/login`, {
-              username: username, password: password
-          })
-            .do(user => this.user = user); // usuário logado
+  // após o login, retorna p/ a última página visitada
+  afterLogin(param: string = this.lastUrl) {
+    this.router.navigate(['/login', btoa(param)]);
+  }
+
+  logout() {
+    this.user = undefined;
+    this.afterLogin();
   }
 }

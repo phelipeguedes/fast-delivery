@@ -15,6 +15,7 @@ export class OrderComponent implements OnInit {
 
   deliveryRate: number = 10;
   formOrder: FormGroup;
+  orderId: string;
 
   emailValidate = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
   numberValidate = /^[0-9]*$/
@@ -86,12 +87,24 @@ export class OrderComponent implements OnInit {
     
     console.log(order);
 
-    this.orderService.checkOrder(order).subscribe((orderId: string) => {
-      console.log(`Compra concluída com sucesso! id da compra: ${orderId}`);
+    this.orderService.checkOrder(order)
+      .do((orderId: string) => {
+        this.orderId = orderId;
+      })
+      .subscribe((orderId: string) => {
+        console.log(`Compra concluída com sucesso! id da compra: ${orderId}`);
 
       this.orderService.clearCartAfterComplete();
       this.orderService.displayScreamOrderDone();
     });
+  }
+
+  checkOrderFinished(): any {
+
+    if(!this.orderId) 
+      return undefined;
+
+    return this.orderId;
   }
 
   callForm() {

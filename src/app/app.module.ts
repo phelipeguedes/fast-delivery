@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, PreloadingStrategy, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -39,7 +39,10 @@ import { ItemSearchComponent } from './search/item-search/item-search.component'
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 import { LoginComponent } from './security/login/login.component'
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { LinkLoginComponent } from './link-login/link-login.component';
+import { RouteGuard } from './security/route.guard';
+import { LeaveRouterGuard } from './order/leave-router.guard';
+import { AppErrorHandler } from './app.error-handler';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ItemSearchComponent,
     StoreDetailComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    LinkLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NgSelectModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [StoreService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, {provide: LOCALE_ID, useValue: 'pt'}],
+  providers: [StoreService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, 
+              RouteGuard, LeaveRouterGuard, {provide: LOCALE_ID, useValue: 'pt'}, {provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

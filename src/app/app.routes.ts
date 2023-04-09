@@ -1,3 +1,4 @@
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { LoginComponent } from './security/login/login.component';
 import { Routes } from "@angular/router";
 import { BakeriesComponent } from "./bakeries/bakeries.component";
@@ -14,8 +15,13 @@ import { RatingComponent } from "./shared/rating/rating.component";
 import { StoreDetailComponent } from "./store-detail/store-detail.component";
 import { StoreComponent } from "./stores/store/store.component";
 import { StoresComponent } from "./stores/stores.component";
+import { RouteGuard } from './security/route.guard';
 
 export const ROUTES: Routes = [
+
+    {path: 'login', component: LoginComponent},
+    {path: 'login/:url', component: LoginComponent},
+
     {path: '', component: HomeComponent},
     {path: 'stores', component: StoresComponent},
     {path: 'restaurants', component: RestaurantsComponent},
@@ -58,12 +64,15 @@ export const ROUTES: Routes = [
         ]
     },
 
+    {path: 'snackbar', component: SnackbarComponent},
     {path: 'order-success-detail', component: OrderDetailComponent},
     {path: 'rate', component: RatingComponent},
+
     /* "about" e "order" serão carregados pelo lazy-loading. o path aponta p/ os módulos deles */
     {path: 'about', loadChildren: './about/about.module#AboutModule'},
-    {path: 'order', loadChildren: './order/order.module#OrderModule'},
-    {path: 'login', component: LoginComponent},
+
+    /* canload só permite realizar compras p/ quem estar autenticado */
+    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [RouteGuard], canActivate: [RouteGuard]}, 
 
     {path: '**', component: NotFoundComponent}
 ]
