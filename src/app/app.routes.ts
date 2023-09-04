@@ -15,12 +15,14 @@ import { RatingComponent } from "./shared/rating/rating.component";
 import { StoreDetailComponent } from "./store-detail/store-detail.component";
 import { StoreComponent } from "./stores/store/store.component";
 import { StoresComponent } from "./stores/stores.component";
+import { RegisterUserComponent } from "./register-user/register-user.component";
 import { RouteGuard } from './security/route.guard';
 
 export const ROUTES: Routes = [
 
     {path: 'login', component: LoginComponent},
     {path: 'login/:url', component: LoginComponent},
+    {path: 'register-user', component: RegisterUserComponent},
 
     {path: '', component: HomeComponent},
     {path: 'stores', component: StoresComponent},

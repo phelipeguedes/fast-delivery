@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { MessageService } from './../../services/message.service';
 import { SnackbarComponent } from './../../shared/snackbar/snackbar.component';
 import { LoginService } from './../../services/login.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(username: string, password: string) {
+      
       username = this.formLogin.value.username,
       password = this.formLogin.value.password,
 
