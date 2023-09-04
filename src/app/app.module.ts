@@ -43,6 +43,7 @@ import { LinkLoginComponent } from './link-login/link-login.component';
 import { RouteGuard } from './security/route.guard';
 import { LeaveRouterGuard } from './order/leave-router.guard';
 import { AppErrorHandler } from './app.error-handler';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { AppErrorHandler } from './app.error-handler';
     StoreDetailComponent,
     NotFoundComponent,
     LoginComponent,
-    LinkLoginComponent
+    LinkLoginComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,8 @@ import { AppErrorHandler } from './app.error-handler';
     SharedModule,
     BrowserAnimationsModule,
     NgSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [StoreService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, 

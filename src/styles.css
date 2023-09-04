@@ -316,3 +316,60 @@ body {
   width: 200px;
 }
 
+/* templates do registro de usuário e login */
+.background-register-login {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+h3.register-login {
+  margin-top: 1px;
+}
+
+.box-register-login {
+  background-color: #fff;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 120px 380px; /* centraliza o box */
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  padding: 1em 2em;
+  border-bottom: 2px solid #ccc;
+  display: table;
+}
+
+div.content-register-login {
+  vertical-align: middle;
+}
+
+.btn-submit-register-login button {
+  background-color: #CE181E;
+  color: #fff;
+  font-weight:600;
+}
+
+/* a cor do texto permanece a mesma ao passar o mouse pelo botão */
+.btn-submit-register-login button:hover {
+  color: #fff;
+}
+
+/* a cor do texto permanece a mesma após clicar no botão e retirar o mouse */
+.btn-submit-register-login button:focus {
+  color: #fff;
+}
+
+.title-brand-register-login small {
+  display: flex;
+  justify-content: center;
+  color: #CE181E;
+}
+
+
