@@ -1,0 +1,27 @@
+div.cadastro {
+    max-width: 350px;
+    border-radius: 2px;
+    background-color: #ce2c20;
+    background-image: url('https://static.ifood-static.com.br/image/upload/f_auto/webapp/landingV2/restaurant.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 160px;    
+}
+
+div.cadastro h4 {
+    padding:0px 8px;
+    
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn {
+    background-color: grey;
+    color: #fff;
+    padding: 6px;
+    margin: 0px 6px;
+    margin-bottom: 5px;
+    float: left;
+    font-weight: 600;
+}

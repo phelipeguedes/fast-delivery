@@ -1,0 +1,6 @@
+<div class="search-container">
+  <form [formGroup]="searchForm">
+    <ng-select class="search-bar" formControlName="searchListening" [items]="stores" [(ngModel)]="selectedItem" (change)="getItemSelected(selectedItem)" bindLabel="name" placeholder="Pesquisar loja"></ng-select>
+  </form>
+</div> 
+

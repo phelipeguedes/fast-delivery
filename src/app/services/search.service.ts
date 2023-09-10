@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AppErrorHandler } from "../app.error-handler";
 
 import { API_MEAT, APP_URL } from "app/app.api";
-import { ItemSearch } from 'app/search/item-search/item-search.model';
+import { ItemSearch } from 'app/components/search/item-search/item-search.model';
 import { StoreService } from './store.service';
 import { Store } from 'app/models/store.model';
 

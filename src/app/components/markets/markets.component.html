@@ -1,0 +1,13 @@
+<section class="content-header">
+  <h1>Mercados</h1>
+</section>
+
+<section class="content">
+
+  <div class="row">
+    <div *ngFor="let market of markets" class="col-sm-6 col-xs-12">
+      <mt-market [market]="market"></mt-market>
+    </div>
+  </div>
+
+</section>

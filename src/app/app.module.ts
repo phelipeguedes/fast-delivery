@@ -3,7 +3,7 @@ import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, PreloadingStrategy, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {ROUTES} from './app.routes'
+import { ROUTES } from './app.routes'
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { LocationStrategy, HashLocationStrategy, registerLocaleData } from '@angular/common';
@@ -11,39 +11,43 @@ import localePt  from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt');
 
 import { AppComponent } from './app.component';
-import { BakeryComponent } from './bakeries/bakery/bakery.component';
-import { BakeriesComponent } from './bakeries/bakeries.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { RestaurantsComponent } from './restaurants/restaurants.component';
-import { RestaurantComponent } from './restaurants/restaurant/restaurant.component'
-import { MenuComponent } from './restaurant-detail/menu/menu.component';
-import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
-import { ItemMenuComponent } from './restaurant-detail/item-menu/item-menu.component';
-import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
-import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service';
+import { BakeryComponent } from './components/bakeries/bakery/bakery.component';
+import { BakeriesComponent } from './components/bakeries/bakeries.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { RestaurantsComponent } from './components/restaurants/restaurants.component';
+import { RestaurantComponent } from './components/restaurants/restaurant/restaurant.component'
+import { MenuComponent } from './components/restaurant-detail/menu/menu.component';
+import { ShoppingCartComponent } from './components/restaurant-detail/shopping-cart/shopping-cart.component';
+import { ItemMenuComponent } from './components/restaurant-detail/item-menu/item-menu.component';
+import { ReviewsComponent } from './components/restaurant-detail/reviews/reviews.component';
+import { ShoppingCartService } from './components/restaurant-detail/shopping-cart/shopping-cart.service';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OrderService } from './order/order.service';
-import { OrderDetailComponent } from './order/order-detail/order-detail.component';
-import { SharedModule } from './shared/shared.module';
-import { DrinkComponent } from './drinks/drink/drink.component';
-import { DrinksComponent } from './drinks/drinks.component';
+import { OrderService } from './components/order/order.service';
+import { OrderDetailComponent } from './components/order/order-detail/order-detail.component';
+import { SharedModule } from './components/shared/shared.module';
+import { DrinkComponent } from './components/drinks/drink/drink.component';
+import { DrinksComponent } from './components/drinks/drinks.component';
 import { StoreService } from './services/store.service';
-import { StoresComponent } from './stores/stores.component';
-import { StoreComponent } from './stores/store/store.component';
-import { SearchComponent } from './search/search.component';
+import { StoresComponent } from './components/stores/stores.component';
+import { StoreComponent } from './components/stores/store/store.component';
+import { SearchComponent } from './components/search/search.component';
 import { SearchService } from './services/search.service';
-import { MarketsComponent } from './markets/markets.component';
-import { MarketComponent } from './markets/market/market.component';
-import { ItemSearchComponent } from './search/item-search/item-search.component';
+import { MarketsComponent } from './components/markets/markets.component';
+import { MarketComponent } from './components/markets/market/market.component';
+import { ItemSearchComponent } from './components/search/item-search/item-search.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
 import { LoginComponent } from './security/login/login.component'
-import { NotFoundComponent } from './not-found/not-found.component';
-import { LinkLoginComponent } from './link-login/link-login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LinkLoginComponent } from './components/link-login/link-login.component';
 import { RouteGuard } from './security/route.guard';
-import { LeaveRouterGuard } from './order/leave-router.guard';
+import { LeaveRouterGuard } from './components/order/leave-router.guard';
 import { AppErrorHandler } from './app.error-handler';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { RegisterBoxComponent } from './components/register-box/register-box.component';
+import { RegisterNewStoreComponent } from './components/register-new-store/register-new-store.component';
+import { StoreFormComponent } from './components/stores/store-form/store-form.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +75,10 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     NotFoundComponent,
     LoginComponent,
     LinkLoginComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    RegisterBoxComponent,
+    RegisterNewStoreComponent,
+    StoreFormComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +90,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [StoreService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, 
+  providers: [StoreService, UserService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, 
               RouteGuard, LeaveRouterGuard, {provide: LOCALE_ID, useValue: 'pt'}, {provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { MessageService } from './../../services/message.service';
-import { SnackbarComponent } from './../../shared/snackbar/snackbar.component';
+import { SnackbarComponent } from '../../components/shared/snackbar/snackbar.component';
 import { LoginService } from './../../services/login.service';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';

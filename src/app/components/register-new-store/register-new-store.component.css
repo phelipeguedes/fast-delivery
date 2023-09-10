@@ -1,0 +1,21 @@
+
+.background-form-store {
+    width: 100%;
+}
+
+.box-register-store {
+    background-color: #fff;
+    margin: 5px auto;
+    width: 750px;
+}
+
+.box-register-store h3 {
+    margin-top: 0%;
+}
+
+.button {
+    background-color: black;
+    float: right !important;
+    font-weight: bold;
+}
+
