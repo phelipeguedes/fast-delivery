@@ -1,0 +1,26 @@
+
+.background-form-store {
+    margin: 1.2% 0 1.2% 0;
+    width: 100%;
+}
+
+.box-register-store {
+    background-color: #fff;
+    margin: 5px auto;
+    width: 750px;
+}
+
+.content h3 {
+    margin-top: 0%;
+}
+
+.btn {
+    padding: 8px 28px;
+    font-weight: bold;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+

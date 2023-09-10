@@ -1,0 +1,56 @@
+<section>
+  <div class="background-register-login">
+    <div class="box-register-login">
+      <div class="title-brand-register-login">
+        <small>#Fast Delivery</small>
+      </div>
+
+      <div class="content-register-login">
+        <h3 class="register-login">Novo Usuário</h3>
+
+        <hr>
+
+        <form [formGroup]="formRegister">
+          
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input class="form-control" formControlName="nome_completo" placeholder="Informe o seu nome completo" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input class="form-control" formControlName="email" placeholder="Informe o seu email" autocomplete="off">
+            </div>            
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="password" class="form-control" formControlName="password" placeholder="Informe uma senha" autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <input type="password" class="form-control" formControlName="password_confirm" placeholder="Informe novamente a senha"/>
+            </div>
+          </div>
+
+          <div class="form-group row btn-submit-register-login">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-block" (click)="addUser()" [disabled]="formRegister.invalid">Salvar</button>
+            </div>
+          </div>
+
+        </form>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <a [routerLink]="['/login']">LOGIN</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

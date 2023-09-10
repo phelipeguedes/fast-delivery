@@ -1,0 +1,11 @@
+<section>
+  <div class="cadastro">
+    <h4 *ngFor="let item of items">{{ item.name }}</h4>
+    
+    <a class="btn btn-sm" [routerLink]="[url]">Cadastre sua loja</a>
+    
+    <div class="icon">
+      <i class="fa fa-store"></i>
+    </div>
+  </div>
+</section>

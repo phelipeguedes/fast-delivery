@@ -3,7 +3,7 @@ import { API_MEAT } from "app/app.api";
 import { Store } from "app/models/store.model";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { ItemMenu } from "app/restaurant-detail/item-menu/item-menu.model";
+import { ItemMenu } from "app/components/restaurant-detail/item-menu/item-menu.model";
 
 @Injectable()
 export class StoreService {

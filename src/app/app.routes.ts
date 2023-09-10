@@ -1,28 +1,32 @@
-import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { SnackbarComponent } from './components/shared/snackbar/snackbar.component';
 import { LoginComponent } from './security/login/login.component';
 import { Routes } from "@angular/router";
-import { BakeriesComponent } from "./bakeries/bakeries.component";
-import { DrinksComponent } from "./drinks/drinks.component";
-import { HomeComponent } from "./home/home.component";
-import { MarketsComponent } from "./markets/markets.component";
-import { NotFoundComponent } from "./not-found/not-found.component";
-import { OrderDetailComponent } from "./order/order-detail/order-detail.component";
-import { MenuComponent } from "./restaurant-detail/menu/menu.component";
-import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
-import { RestaurantsComponent } from "./restaurants/restaurants.component";
-import { ItemSearchComponent } from "./search/item-search/item-search.component";
-import { RatingComponent } from "./shared/rating/rating.component";
+import { BakeriesComponent } from "./components/bakeries/bakeries.component";
+import { DrinksComponent } from "./components/drinks/drinks.component";
+import { HomeComponent } from "./components/home/home.component";
+import { MarketsComponent } from "./components/markets/markets.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { OrderDetailComponent } from "./components/order/order-detail/order-detail.component";
+import { MenuComponent } from "./components/restaurant-detail/menu/menu.component";
+import { ReviewsComponent } from "./components/restaurant-detail/reviews/reviews.component";
+import { RestaurantsComponent } from "./components/restaurants/restaurants.component";
+import { ItemSearchComponent } from "./components/search/item-search/item-search.component";
+import { RatingComponent } from "./components/shared/rating/rating.component";
 import { StoreDetailComponent } from "./store-detail/store-detail.component";
-import { StoreComponent } from "./stores/store/store.component";
-import { StoresComponent } from "./stores/stores.component";
-import { RegisterUserComponent } from "./register-user/register-user.component";
+import { StoreComponent } from "./components/stores/store/store.component";
+import { StoresComponent } from "./components/stores/stores.component";
+import { RegisterUserComponent } from "./components/register-user/register-user.component";
 import { RouteGuard } from './security/route.guard';
+import { RegisterNewStoreComponent } from './components/register-new-store/register-new-store.component';
+import { StoreFormComponent } from './components/stores/store-form/store-form.component'
 
 export const ROUTES: Routes = [
 
     {path: 'login', component: LoginComponent},
     {path: 'login/:url', component: LoginComponent},
     {path: 'register-user', component: RegisterUserComponent},
+    {path: 'new-store', component: StoreFormComponent},
+    {path: 'edit-store/:id', component: StoreFormComponent},
 
     {path: '', component: HomeComponent},
     {path: 'stores', component: StoresComponent},
@@ -74,7 +78,7 @@ export const ROUTES: Routes = [
     {path: 'about', loadChildren: './about/about.module#AboutModule'},
 
     /* canload só permite realizar compras p/ quem estar autenticado */
-    {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [RouteGuard], canActivate: [RouteGuard]}, 
+    {path: 'order', loadChildren: './components/order/order.module#OrderModule', canLoad: [RouteGuard], canActivate: [RouteGuard]}, 
 
     {path: '**', component: NotFoundComponent}
 ]

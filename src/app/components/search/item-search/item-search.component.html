@@ -1,0 +1,10 @@
+<a [routerLink]="['/stores', itemSearch.id]">
+  <div class="place-info-box-search" *ngIf="itemSearch">
+    <div class="place-info-box-content-search">
+      <span class="place-info-box-text-search">{{ itemSearch.name }}</span>
+      <span>-</span>
+      <span class="place-info-box-detail-search">{{ itemSearch.subcategory }}</span>
+    </div>
+  </div>
+</a>
+
