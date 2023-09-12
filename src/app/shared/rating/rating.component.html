@@ -1,9 +1,0 @@
-<b>Avalie</b> sua experiência:
-<i class="fa fa-star-o" 
-      *ngFor="let star of stars"
-      [class.fa-star]="star <= rate" 
-      [class.fa-star-o]="star > rate" 
-      (click)="evaluateOrder(star)"
-      (mouseenter)="setTmpEvaluateOrder(star)"
-      (mouseleave)="clearTmpEvaluateOrder()">
-</i>

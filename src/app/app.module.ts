@@ -36,7 +36,7 @@ import { SearchService } from './services/search.service';
 import { MarketsComponent } from './components/markets/markets.component';
 import { MarketComponent } from './components/markets/market/market.component';
 import { ItemSearchComponent } from './components/search/item-search/item-search.component';
-import { StoreDetailComponent } from './store-detail/store-detail.component';
+import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { LoginComponent } from './security/login/login.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LinkLoginComponent } from './components/link-login/link-login.component';
@@ -48,6 +48,8 @@ import { RegisterBoxComponent } from './components/register-box/register-box.com
 import { RegisterNewStoreComponent } from './components/register-new-store/register-new-store.component';
 import { StoreFormComponent } from './components/stores/store-form/store-form.component';
 import { UserService } from './services/user.service';
+import { RegisterNewDeliverymanComponent } from './components/register-new-deliveryman/register-new-deliveryman.component';
+import { DeliveryManFormComponentComponent } from './components/delivery-man-form-component/delivery-man-form-component.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { UserService } from './services/user.service';
     RegisterUserComponent,
     RegisterBoxComponent,
     RegisterNewStoreComponent,
-    StoreFormComponent
+    RegisterNewDeliverymanComponent,
+    StoreFormComponent,
+    DeliveryManFormComponentComponent
   ],
   imports: [
     BrowserModule,
