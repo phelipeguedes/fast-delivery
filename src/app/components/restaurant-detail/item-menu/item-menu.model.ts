@@ -4,5 +4,5 @@ export interface ItemMenu {
     name: string;
     description: string;
     price: number;
-    imagePath: string;
+    image_path: string;
 }

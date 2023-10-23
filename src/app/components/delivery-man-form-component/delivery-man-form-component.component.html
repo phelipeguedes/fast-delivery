@@ -6,15 +6,15 @@
 
         <hr>
     
-        <form>      
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">      
           <div class="form-group">
             <label for="Nome">Nome:</label>
-            <input class="form-control" type="text" placeholder="Informe o seu nome">
+            <input class="form-control" type="text" formControlName="name" placeholder="Informe o seu nome">
           </div>
         
           <div class="form-group">
             <label for="sexo">Sexo</label>
-            <select class="form-control" name="categoria" id="categoria">
+            <select class="form-control" formControlName="gender">
               <option value="masculino">Masculino</option>
               <option value="feminino">Feminino</option>
             </select>
@@ -22,21 +22,21 @@
 
           <div class="form-group">
             <label for="Nome">Data de Nascimento:</label>
-            <input class="form-control" type="date">
+            <input class="form-control" type="date" formControlName="date_of_birth">
           </div>
 
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="cpf">CPF:</label>
-                <input type="text" class="form-control" placeholder="Informe o seu CPF">
+                <input type="text" class="form-control" formControlName="cpf" placeholder="Informe o seu CPF">
               </div>
             </div>
             
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="rg">RG:</label>
-                <input type="text" class="form-control" placeholder="Informe o seu RG">
+                <input type="text" class="form-control" formControlName="identity" placeholder="Informe o seu RG">
               </div>
             </div>
           </div>  
@@ -45,14 +45,14 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" name="email" placeholder="(00)00000-0000">
+                <input type="tel" class="form-control" formControlName="phone" placeholder="(00)00000-0000">
               </div>    
             </div>
         
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Informe o seu e-mail">
+                <input type="email" class="form-control" formControlName="email" placeholder="Informe o seu e-mail">
               </div>
             </div>
           </div>
@@ -61,14 +61,14 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="cep">CEP</label>
-                <input type="text" class="form-control" name="cep" placeholder="Digite o CEP">
+                <input type="text" class="form-control" formControlName="cep" placeholder="Digite o CEP">
               </div>
             </div>
 
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" name="endereco" placeholder="Nome da rua e o número">
+                <input type="text" class="form-control" formControlName="address" placeholder="Nome da rua e o número">
               </div>
             </div>
           </div>
@@ -77,28 +77,28 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="bairro">Bairro</label>
-                <input type="text" class="form-control" name="bairro" placeholder="Nome do seu bairro">
+                <input type="text" class="form-control" formControlName="neighborhood" placeholder="Nome do seu bairro">
               </div>
             </div>
 
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="cidade">Cidade</label>
-                <input type="text" class="form-control" name="cidade" placeholder="Nome da cidade">
+                <input type="text" class="form-control" formControlName="city" placeholder="Nome da cidade">
               </div>
             </div>
 
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="estado">Estado</label>
-                <input type="text" class="form-control" name="estado" placeholder="Nome do estado">
+                <input type="text" class="form-control" formControlName="state" placeholder="Nome do estado">
               </div>
             </div>
           </div>
         
           <div class="form-group">
             <label for="imagem">Insira Sua Foto</label>
-            <input type="file" name="" id="">
+            <input type="file" (change)="onImageSelected($event)">
           </div>  
           
           <div class="row">

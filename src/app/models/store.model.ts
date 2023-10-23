@@ -3,9 +3,11 @@ export interface Store {
     name: string;
     category: string;
     subcategory: string;
-    deliveryEstimate: string;
+    delivery_estimate: string;
     rating: number;
-    imagePath: string;
+    image_path: string;
     about: string;
-    hours: string;
+    openingHours: string;
+    email: string;
+    phone: string;
 }

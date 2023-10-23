@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AppErrorHandler } from "../app.error-handler";
 
-import { API_MEAT, APP_URL } from "app/app.api";
+import { API_FAST, APP_URL } from "app/app.api";
 import { ItemSearch } from 'app/components/search/item-search/item-search.model';
 import { StoreService } from './store.service';
 import { Store } from 'app/models/store.model';
@@ -25,7 +25,7 @@ export class SearchService {
       console.log(params)
     }
 
-    return this.http.get<ItemSearch[]>(`${API_MEAT}/stores`, {params: params});    
+    return this.http.get<ItemSearch[]>(`${API_FAST}/stores`, {params: params});    
   } 
 
   getStores(): Observable<Store[]> {
