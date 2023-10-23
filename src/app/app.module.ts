@@ -5,6 +5,7 @@ import { PreloadAllModules, PreloadingStrategy, RouterModule } from '@angular/ro
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ROUTES } from './app.routes'
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { LocationStrategy, HashLocationStrategy, registerLocaleData } from '@angular/common';
 import localePt  from '@angular/common/locales/pt';
@@ -22,7 +23,7 @@ import { ShoppingCartComponent } from './components/restaurant-detail/shopping-c
 import { ItemMenuComponent } from './components/restaurant-detail/item-menu/item-menu.component';
 import { ReviewsComponent } from './components/restaurant-detail/reviews/reviews.component';
 import { ShoppingCartService } from './components/restaurant-detail/shopping-cart/shopping-cart.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { OrderService } from './components/order/order.service';
 import { OrderDetailComponent } from './components/order/order-detail/order-detail.component';
 import { SharedModule } from './components/shared/shared.module';
@@ -90,8 +91,8 @@ import { DeliveryManFormComponentComponent } from './components/delivery-man-for
     SharedModule,
     BrowserAnimationsModule,
     NgSelectModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [StoreService, UserService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, 

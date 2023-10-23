@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ItemCart } from "app/components/restaurant-detail/shopping-cart/item-cart.model";
 import { ShoppingCartService } from "app/components/restaurant-detail/shopping-cart/shopping-cart.service";
 import { Order } from "./order.model";
-import { API_MEAT } from '../../app.api'
+import { API_FAST } from '../../app.api'
 import { Observable } from "rxjs/Observable";
 import { Router } from "@angular/router";
 import { OrderDetailComponent } from "../../components/order/order-detail/order-detail.component";
@@ -39,7 +39,7 @@ export class OrderService {
     }
 
     checkOrder(order: Order): Observable<string>{        
-        return this.http.post<Order>(`${API_MEAT}/orders`, order)                    
+        return this.http.post<Order>(`${API_FAST}/orders`, order)                    
                 .pipe(map(order => order.id));                    
     }
 

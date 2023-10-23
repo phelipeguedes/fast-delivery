@@ -11,7 +11,7 @@ import { ItemMenu } from '../item-menu/item-menu.model';
 export class MenuComponent implements OnInit {
 
   menu: Observable<ItemMenu[]>;
-  
+
   constructor(private storeService: StoreService, private route: ActivatedRoute) { }
 
   ngOnInit() {

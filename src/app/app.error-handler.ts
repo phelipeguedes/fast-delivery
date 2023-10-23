@@ -13,7 +13,7 @@ export class AppErrorHandler extends ErrorHandler{
     }
 
     handleError(error: HttpErrorResponse | any) {
-        
+
         let msgError: string;
 
         if(error instanceof HttpErrorResponse) {
@@ -22,16 +22,17 @@ export class AppErrorHandler extends ErrorHandler{
                 if(error.status == 401) {
                     msgError = `Erro ${error.status}. Você precisa fazer login para acessar a página solicitada.`;
                     this.loginService.afterLogin();
-                }                    
+                }
 
                 if(error.status == 404)
                     msgError = `Erro ${error.status}. A URL ${error.url} não foi encontrada no servidor.`;
-                
+
                 if(error.status == 403)
                     msgError = `Erro ${error.status}. Não há permissão para acessar a URL solicitada.`;
 
                 this.messageService.showMessage(msgError);
             });
+
         } else {
             msgError = error.toString();
             this.messageService.showMessage(msgError);

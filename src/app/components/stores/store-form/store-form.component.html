@@ -5,70 +5,117 @@
         <h3>Nova Loja</h3>
 
         <hr>
-    
-        <form>      
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" #formDir="ngForm" enctype="multipart/form-data">
           <div class="form-group">
             <label for="Nome">Nome:</label>
-            <input class="form-control" type="text" placeholder="Nome da sua loja">
+            <input class="form-control" type="text" formControlName="name" placeholder="Nome da sua loja">
+
+            <div class="error" *ngIf="!name.valid && name.touched || !name.valid && formDir.submitted">
+              <span style="color: red;">O campo nome é obrigatório e deve conter no mínimo 3 caracteres</span>
+            </div>
           </div>
-        
+
           <div class="form-group">
             <label for="categoria">Categoria</label>
-            <select class="form-control" name="categoria" id="categoria">
-              <option value="1">Restaurante</option>
-              <option value="2">Lachonete</option>
+            <select class="form-control" formControlName="category" placeholder="Selecione um item">
+              <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
             </select>
+
+            <div class="error" *ngIf="!category.valid && category.touched || !category.valid && formDir.submitted">
+              <span style="color: red;">Selecione uma categoria</span>
+            </div>
           </div>
-        
+
           <div class="form-group">
             <label for="subcategoria">Sub-categoria</label>
-            <select class="form-control" name="subcategoria" id="subcategoria">
-              <option value="1">Restaurante</option>
-              <option value="2">Lachonete</option>
+            <select class="form-control" formControlName="subcategory" placeholder="Selecione um item">
+              <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.name }}</option>
             </select>
+
+            <div class="error" *ngIf="!subcategory.valid && subcategory.touched || !subcategory.valid && formDir.submitted">
+              <span style="color: red;">Selecione uma subcategoria</span>
+            </div>
           </div>
-        
+
           <div class="form-group">
             <label for="estimativa">Estimativa de entrega:</label>
-            <input type="time" class="form-control" placeholder="Tempo para fazer uma entrega">
+            <input type="text" class="form-control" formControlName="deliveryEstimate" placeholder="30 minutos | 45 minutos | 1 hora">
+
+            <div class="error" *ngIf="!deliveryEstimate.valid && deliveryEstimate.touched || !deliveryEstimate.valid && formDir.submitted">
+              <span>O campo estimativa é obrigatório</span>
+            </div>
           </div>
-        
+
           <div class="form-group">
             <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" name="descricao" placeholder="Descreva o tipo de serviço da sua loja">
+            <input type="text" class="form-control" formControlName="about" placeholder="Descreva o tipo de serviço da sua loja">
+
+            <div class="error" *ngIf="!about.valid && about.touched || !about.valid && formDir.submitted">
+              <span>O campo descrição é obrigatório</span>
+            </div>
           </div>
-        
+
+          <div class="form-group">
+            <label for="horario">Horário de Funcionamento</label>
+            <input type="text" class="form-control" formControlName="openingHours" placeholder="Funciona de segunda à sábado, de 08:00hs às 20:00h">
+
+            <div class="error" *ngIf="!openingHours.valid && openingHours.touched || !openingHours.valid && formDir.submitted">
+              <span>O campo de horário é obrigatório</span>
+            </div>
+          </div>
+
           <div class="row">
+
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" placeholder="Informe o seu e-mail">
-              </div>    
+                <input type="text" class="form-control" formControlName="email" placeholder="Informe o seu e-mail">
+              </div>
+
+              <div class="error" *ngIf="!email.valid && email.touched || !email.valid && formDir.submitted">
+                <span>O campo email é obrigatório</span>
+              </div>
             </div>
-        
+
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" name="email" placeholder="(00)00000-0000">
+                <input type="tel" class="form-control" formControlName="phone" placeholder="(00)00000-0000">
+              </div>
+
+              <div class="error" *ngIf="!phone.valid && phone.touched || !phone.valid && formDir.submitted">
+                <span>O campo telefone é obrigatório</span>
               </div>
             </div>
+
           </div>
-        
+
           <div class="form-group">
             <label for="imagem">Insira uma imagem da sua loja</label>
-            <input type="file" name="" id="">
-          </div>  
-          
+            <input type="file" class="image-upload" (change)="onImageSelected($event)" #imageUpload>
+
+            <div class="error" *ngIf="!image.valid && image.touched || !image.valid && formDir.submitted">
+              <span>A imagem é obrigatória</span>
+            </div>
+
+            <div class="" *ngIf="image">
+              <img [src]="image" [alt]="form.value.name">
+            </div>
+          </div>
+
           <div class="row">
+
             <div class="col-sm-6">
-              <button type="submit" class="btn btn-success btn-md" id="btn_submit">Salvar</button>
+              <button class="btn btn-success btn-md" type="submit" id="btn_submit">Salvar</button>
             </div>
 
             <div class="col-sm-6 flex-end">
               <button type="reset" class="btn btn-default btn-md">Cancelar</button>
-            </div>          
-          </div>          
-          
+            </div>
+
+          </div>
+
         </form>
       </div>
     </div>

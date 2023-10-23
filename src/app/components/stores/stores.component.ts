@@ -32,13 +32,13 @@ export class StoresComponent implements OnInit {
       console.log(bakeries);
       this.stores = bakeries;
     });
-  }
+  }*/
 
   restaurants() {
     this.storeService.getRestaurants().subscribe(restaurants => {
       console.log(restaurants);
       this.stores = restaurants;
-    }); 
-  } */
+    });
+  }
 
 }

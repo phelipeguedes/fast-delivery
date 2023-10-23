@@ -1,4 +1,4 @@
-import { API_MEAT } from 'app/app.api';
+import { API_FAST } from 'app/app.api';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -24,7 +24,7 @@ export class LoginService {
   }
 
   login(username, password):Observable<User> {
-        return this.http.post<User>(`${API_MEAT}/login`, {
+        return this.http.post<User>(`${API_FAST}/login`, {
               username: username,
               password: password
         })
