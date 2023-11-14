@@ -20,8 +20,9 @@ export class StoreService {
         return this.http.get<Store[]>(`${API_FAST}/stores`);
     }
 
-    getStoreById(id: string): Observable<Store> {
-        return this.http.get<Store>(`${API_FAST}/stores/${id}`);
+    getStoreById(id: number): Observable<Store> {
+        console.log(id)
+        return this.http.get<Store>(`${API_FAST}/store/${id}`);
     }
 
     getBakeries(): Observable<Store[]> {
@@ -42,6 +43,15 @@ export class StoreService {
 
     saveStore(formData: FormData):Observable<FormData> {
         return this.http.post<FormData>(`${API_FAST}/new-store`, formData);
+    }
+
+    updateStore(id: number, formData: FormData):Observable<any> {
+      console.log(formData)
+      return this.http.put(`${API_FAST}/update-store/${id}`, formData);
+    }
+
+    deleteStore(id: number) {
+      return this.http.delete(`${API_FAST}/delete-store/${id}`);
     }
 
     showReviews(id: string):Observable<any> {

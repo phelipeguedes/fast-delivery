@@ -6,7 +6,7 @@ import { MessageService } from 'app/services/message.service';
 import { Category } from 'app/models/category.model';
 import { Subcategory } from 'app/models/subcategory.model';
 import { error } from '@angular/compiler/src/util';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'mt-store-form',
@@ -15,14 +15,20 @@ import { Router } from '@angular/router';
 })
 export class StoreFormComponent implements OnInit {
 
-  form: FormGroup
+  title: string = '';
+  form: FormGroup;
+  editForm: boolean = false;
   categories: Category[] = [];
   subcategories: Subcategory[] = [];
 
+  @Input() storeData: Store;
+
   constructor(private formBuilder: FormBuilder, private storeService: StoreService,
-               private messageService: MessageService, private router: Router) {}
+               private messageService: MessageService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
+    this.setPageTitle();
+
     this.initForm();
     this.getAllCategories();
     this.getAllSubcategories();
@@ -31,14 +37,15 @@ export class StoreFormComponent implements OnInit {
   initForm() {
 
     this.form = this.formBuilder.group({
+      id: [null],
       name: [null, [Validators.required, Validators.minLength(3)]],
       category: [null, [Validators.required]],
       subcategory: [null, [Validators.required]],
       deliveryEstimate: [null, [Validators.required]],
       about: [null, [Validators.required, Validators.minLength(10)]],
       openingHours:[null, [Validators.required]],
-      email: [null, [Validators.required]],
-      phone: [null, [Validators.required, Validators.pattern('[- +()0-9]+')]],
+      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      phone: [null, [Validators.required, Validators.pattern("[- +()0-9]+")]],
       image: [null, [Validators.required]]
     });
   }
@@ -62,6 +69,22 @@ export class StoreFormComponent implements OnInit {
 
   get openingHours() { return this.form.get('openingHours') };
 
+
+  setPageTitle() {
+
+    this.activatedRoute.params.subscribe(params => {
+
+      if(params['id']) {
+        this.editForm = true;
+        this.title = 'Editar Loja';
+        this.updateForm(params['id']);
+      } else {
+        this.title = 'Nova Loja';
+      }
+
+    });
+  }
+
   onImageSelected(event: any) {
     const file = event.target.files[0];
     this.form.patchValue({image: file});
@@ -75,26 +98,54 @@ export class StoreFormComponent implements OnInit {
     formData.append('category', this.form.value.category);
     formData.append('subcategory', this.form.value.subcategory);
     formData.append('about', this.form.value.about);
-    formData.append('deliveryEstimate', this.form.value.deliveryEstimate);
+    formData.append('delivery_estimate', this.form.value.deliveryEstimate);
     formData.append('email', this.form.value.email);
     formData.append('phone', this.form.value.phone);
     formData.append('image_path', this.form.value.image);
-    formData.append('openingHours', this.form.value.openingHours);
+    formData.append('opening_hours', this.form.value.openingHours);
 
     if(!this.form.valid) {
       return this.messageService.showMessage('Todos os campos do formulário são obrigatórios');
     }
 
-    await this.storeService.saveStore(formData).subscribe(() => {
-      this.messageService.showMessage('Registro salvo com sucesso!!!');
+    if(this.form.valid) {
 
-      setTimeout(() => {
-        this.router.navigate(['/stores']);
-      }, 2500);
-    }, error => {
-      console.log('Erro: ', error);
-      return this.messageService.showMessage('Erro ao salvar o registro: ' + error);
-    });
+      if(this.form.value.id) {
+
+        // atualização
+        console.log(this.form.value)
+        console.log(formData);
+
+        const id = this.form.value.id;
+
+        await this.storeService.updateStore(id, formData).subscribe((success) => {
+            console.log(success);
+            this.messageService.showMessage(success.toString());
+          },
+          error => {
+            this.messageService.showMessage('Erro ao criar o registro: ' + error);
+          }
+        )
+
+      } else {
+
+        // novo cadastro
+
+        await this.storeService.saveStore(formData).subscribe((success) => {
+
+          this.messageService.showMessage(success.toString());
+
+          setTimeout(() => {
+            this.router.navigate(['/stores']);
+          }, 2500);
+
+        }, error => {
+          console.log('Erro: ', error);
+          return this.messageService.showMessage('Erro ao salvar o registro: ' + error);
+        });
+    }
+  }
+
   }
 
   getAllCategories() {
@@ -111,5 +162,27 @@ export class StoreFormComponent implements OnInit {
 
       this.subcategories = subcategories;
     })
+  }
+
+  // preenche o form de edição com os dados da loja correspondente
+  updateForm(id:number) {
+
+    return this.storeService.getStoreById(id).subscribe((item) => {
+        console.log(item)
+
+        this.form.patchValue({
+          id: item.id,
+          name: item.name,
+          category: item.category,
+          subcategory: item.subcategory,
+          deliveryEstimate: item.delivery_estimate,
+          about: item.about,
+          openingHours: item.opening_hours,
+          email: item.email,
+          phone: item.phone,
+          //image: item.image_path
+        });
+        console.log(this.form.value)
+    });
   }
 }
