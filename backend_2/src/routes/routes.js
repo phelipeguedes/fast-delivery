@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const multer = require('multer');
-const uploadImages = require('../config_upload_images/multer');
 const upload = multer({ dest: 'uploads/' });
 
 const express = require('express');
@@ -22,10 +21,14 @@ router.get('/markets', StoreController.getMarkets);
 router.get('/categories', CategoryController.index);
 router.get('/subcategories', SubcategoryController.index);
 router.get('/deliverymen', DeliverymenController.index);
+router.get('/store/:id', StoreController.getStoreById);
 router.get('/stores/:id/menu', MenuController.index);
 
-// salva os registros e faz upload das images
+// salva o novo registro e faz upload das imagens
 router.post('/new-store', upload.single('image_path'), StoreController.create);
+// edita um registro existente e faz o upload da imagem
+router.put('/update-store/:id', upload.single('image_path'), StoreController.update);
+router.delete('/delete-store/:id', StoreController.delete);
 router.post('/new-deliveryman', upload.single('image_path'), DeliverymenController.create);
 
 module.exports = router;

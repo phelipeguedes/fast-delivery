@@ -7,26 +7,15 @@ export class ShoppingCartService {
     items: ItemCart[] = [];
 
     addItemToCart(item: ItemMenu) {
-        
+
         // verifica se um item do menu já está na lista de itens adicionados
         let itemFound = this.items.find((itemOfMenu) => itemOfMenu.itemMenu.id === item.id);
-        
+
         if(itemFound)
             itemFound.qtdItens++;
          else
-            this.items.push(new ItemCart(item));        
+            this.items.push(new ItemCart(item));
     }
-
-    /* removeItemOfCart(itemCart: ItemCart) {
-
-        let itemFound = this.items.find((itemOfMenu) => itemOfMenu.itemMenu.id === itemCart.itemMenu.id);
-        let itemFromCart: ItemCart;
-
-        if(itemCart.qtdItens > 1)
-            itemFound.qtdItens--;
-        else
-            this.items.splice(this.items.indexOf(itemFromCart), 1);
-    } */
 
     increaseQtdItems(item: ItemCart) {
         item.qtdItens++;
@@ -40,15 +29,11 @@ export class ShoppingCartService {
     }
 
     removeItem(item:ItemCart) {
-        console.log('no sc service')
         this.items.splice(this.items.indexOf(item), 1);
     }
 
     removeAllItems() {
-        let text = 'Quer mesmo remover todos os itens do carrinho?';
-
-        if(confirm(text) == true) 
-            this.items.length = 0;
+        this.items.length = 0;
     }
 
     clearCart() {

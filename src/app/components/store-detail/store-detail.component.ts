@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from 'app/models/store.model';
+import { MessageService } from 'app/services/message.service';
 import { StoreService } from 'app/services/store.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'mt-store-detail',
@@ -12,7 +15,8 @@ export class StoreDetailComponent implements OnInit {
 
   store: Store;
 
-  constructor(private storeService: StoreService, private route: ActivatedRoute) { }
+  constructor(private storeService: StoreService, private route: ActivatedRoute, private router: Router,
+                 private messageService: MessageService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getIdByRoute();
@@ -26,6 +30,42 @@ export class StoreDetailComponent implements OnInit {
       this.store = store;
       console.log(this.store)
     });
+  }
+
+  onEdit(id: string) {
+    this.router.navigate([`/edit-store/${id}`]);
+  }
+
+  onDelete(id: number) {
+    this.storeService.deleteStore(id).subscribe(
+      (msgSuccess) => {
+
+        this.messageService.showMessage(msgSuccess.toString());
+
+        setTimeout(() => {
+          this.router.navigate(['/stores']);
+        }, 2500);
+      },
+      (msgError) => {
+        this.messageService.showMessage(msgError.toString());
+      }
+    )
+  }
+
+  openDialog(id: any): void {
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '250px',
+      panelClass: 'my-custom-dialog',
+      data: { description: 'Quer mesmo excluir essa loja?' }
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if(result) {
+        this.onDelete(id);
+      }
+    });
+
   }
 
 }

@@ -95,7 +95,7 @@ import { DeliveryManFormComponentComponent } from './components/delivery-man-for
     FormsModule,
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [StoreService, UserService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent, 
+  providers: [StoreService, UserService, SearchService, ShoppingCartService, OrderService, FormBuilder, SearchComponent,
               RouteGuard, LeaveRouterGuard, {provide: LOCALE_ID, useValue: 'pt'}, {provide: ErrorHandler, useClass: AppErrorHandler}],
   bootstrap: [AppComponent]
 })

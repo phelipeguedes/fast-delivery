@@ -14,14 +14,18 @@ import { LoginService } from "app/services/login.service";
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { RouteGuard } from 'app/security/route.guard';
 import { LeaveRouterGuard } from '../../components/order/leave-router.guard';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';,
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { Interceptor } from 'app/security/interceptor';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
-    declarations: [InputComponent, RadioComponent, RatingComponent, SnackbarComponent],
-    imports: [CommonModule, FormsModule, ReactiveFormsModule],
+    declarations: [InputComponent, RadioComponent, RatingComponent, SnackbarComponent, ConfirmationDialogComponent],
+    entryComponents: [ConfirmationDialogComponent],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, MatDialogModule, MatButtonModule],
     exports: [InputComponent, RadioComponent, RatingComponent, CommonModule,
-               FormsModule,  ReactiveFormsModule, SnackbarComponent ]
+               FormsModule,  ReactiveFormsModule, SnackbarComponent, ConfirmationDialogComponent ]
 })
 
 /* retorna todos os módulos (componentes) compartilhados (shared), mais os providers (serviços)
@@ -29,15 +33,15 @@ o shared module tem a opção de ser importado só com os módulos (SharedModule
 de acordo com a necessidade da funcionalidade da aplicação */
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
-        
-        return {ngModule: SharedModule, 
-                providers: [ShoppingCartService, 
+
+        return {ngModule: SharedModule,
+                providers: [ShoppingCartService,
                             StoreService,
                             OrderService,
                             LoginService,
                             MessageService,
                             RouteGuard,
-                            LeaveRouterGuard, 
+                            LeaveRouterGuard,
                             {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}
                         ]}
     }

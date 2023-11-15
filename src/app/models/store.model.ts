@@ -7,7 +7,7 @@ export interface Store {
     rating: number;
     image_path: string;
     about: string;
-    openingHours: string;
+    opening_hours: string;
     email: string;
     phone: string;
 }

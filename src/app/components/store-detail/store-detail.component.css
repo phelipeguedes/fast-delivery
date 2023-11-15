@@ -1,0 +1,11 @@
+.btn-warning:hover {
+  background-color:rgb(243 156 16) !important;
+}
+
+.btn-danger:hover {
+  background-color:rgb(221 75 57) !important;
+}
+
+.btn {
+  margin-left: 2px;
+}
