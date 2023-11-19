@@ -16,7 +16,7 @@ const MenuController = {
       });
 
       if(response.length == 0) {
-        res.json('Nenhum registro encontrado');
+        res.status(200).json([]);
         return;
       }
 

@@ -44,6 +44,8 @@ const StoreModel = connection.define('stores', {
 // criação da tabela stores
 StoreModel.sync({force: false}).then(() => {
     console.log('Tabela lojas criada com sucesso!');
+}).catch((err) => {
+    console.log('Ocorreum um erro: ' + err);
 });
 
 module.exports = StoreModel;

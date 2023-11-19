@@ -1,6 +1,18 @@
 <!--INÍCIO DO MENU -->
 <div class="col-md-9 col-xs-12">
-  <mt-item-menu *ngFor="let item of menu | async" [itemMenu]="item" (addItem)="shoppingCart.addItem($event)"></mt-item-menu>
+
+  <div class="col-md-12 col-xs-12 no-records" *ngIf="menu.length == 0; else mostraMenu">
+    <div class="box-header">
+      <i class="fa fa-list"></i>
+      <h3 class="box-title">Itens</h3>
+    </div>
+    <p style="color: red;">Nenhum registro foi encontrado</p>
+  </div>
+
+  <ng-template #mostraMenu>
+    <mt-item-menu *ngFor="let item of menu" [itemMenu]="item" (addItem)="shoppingCart.addItem($event)"></mt-item-menu>
+  </ng-template>
+
 </div>
 
 <mt-shopping-cart #shoppingCart></mt-shopping-cart>

@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { API_FAST } from 'app/app.api';
+import { Role } from 'app/models/role.model';
 import { User } from 'app/models/user.model';
 
 @Injectable({
@@ -12,8 +15,8 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  saveNewUser(user: User) {
-    console.log(user)
+  saveUser(user: User) {
+    return this.http.post<any>(`${API_FAST}/new-user`, user);
   }
 
   listAllUsers(): User[] {
@@ -34,5 +37,9 @@ export class UserService {
 
   getOrdersUserById(idUser: number) {
 
+  }
+
+  getRoles(): Observable<Role[]> {
+    return this.http.get<Role[]>(`${API_FAST}/roles`);
   }
 }

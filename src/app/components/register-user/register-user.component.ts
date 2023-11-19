@@ -1,6 +1,10 @@
 import { UserService } from '../../services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Role } from 'app/models/role.model';
+import { ConfirmPasswordValidator } from '../shared/validator_password';
+import { MessageService } from 'app/services/message.service';
+import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'mt-register-user',
@@ -9,24 +13,47 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 export class RegisterUserComponent implements OnInit {
 
-  formRegister: FormGroup;
+  form: FormGroup;
+  roles: Role[] = [];
 
-  constructor(private formBuider: FormBuilder, private userService: UserService) { }
+  constructor(private formBuider: FormBuilder, private userService: UserService, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.listeningFormRegister();
+    this.initForm();
+    this.getRoles();
   }
 
-  listeningFormRegister() {
-    this.formRegister = this.formBuider.group({
-      nome_completo: this.formBuider.control(''),
-      email: this.formBuider.control(''),
-      password: this.formBuider.control(''),
-      password_confirm: this.formBuider.control('')
+  initForm() {
+    this.form = this.formBuider.group({
+      name: [null, [Validators.required]],
+      email: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      password_confirm: [null, [Validators.required]],
+      role: this.formBuider.control('')
+    }, {
+      validator: ConfirmPasswordValidator('password', 'password_confirm')
     });
   }
 
-  addUser() {
-    this.userService.saveNewUser(this.formRegister.value);
+  async onSubmit() {
+
+    if(!this.form.valid) {
+      return this.messageService.showMessage('Todos os campos do formulário são obrigatórios');
+    }
+
+    this.userService.saveUser(this.form.value).subscribe((response) => {
+      this.messageService.showMessage(response.message);
+    },
+    error => {
+      this.messageService.showMessage(error.message)
+    });
+
+    this.form.reset();
+  }
+
+  getRoles() {
+    return this.userService.getRoles().subscribe((roles) => {
+      this.roles = roles;
+    });
   }
 }

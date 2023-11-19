@@ -19,36 +19,32 @@ export class LoginComponent implements OnInit {
               private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    
-    this.listeningToForm();
-
+    this.initToForm();
     this.routeToNavigate = this.activatedRoute.snapshot.params['url'] || btoa('/');
   }
 
-  listeningToForm() {
+  initToForm() {
     this.formLogin = this.formBuilder.group({
-      username: this.formBuilder.control(''),
-      password: this.formBuilder.control('')
+      email: [null, [Validators.required]],
+      password: [null, [Validators.required]]
     })
   }
 
-  login(username: string, password: string) {
-      
-      username = this.formLogin.value.username,
+  login(email: string, password: string) {
+
+      email = this.formLogin.value.email,
       password = this.formLogin.value.password,
 
-      this.loginService.login(username, password).subscribe(user => {
-        console.log(user);
-        
-        this.messageService.showMessage('Usuário(a)logado com sucesso!!!');
+      this.loginService.login(email, password).subscribe(response => {
+        console.log(response);
+
+        this.messageService.showMessage(response.message);
         this.router.navigate([atob(this.routeToNavigate)]);
       },
       (err) => {
         console.log(err);
 
-        let { error } = err;
-        let errorMessage = error.errorMessage;
-
+        let errorMessage = err.error.message
         this.messageService.showMessage(errorMessage);
       });
   }
