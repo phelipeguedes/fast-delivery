@@ -50,7 +50,7 @@ const DeliverymenController = {
                 res.json(result);
                 res.status(200);
             }).catch((err) => {
-                res.json({"message":"ocorreu um erro. não foi possível salvar o registro: ", err});
+                res.json({"message":"Ocorreu um erro. Não foi possível salvar o entregador: " + err});
                 res.status(400);
             });
 

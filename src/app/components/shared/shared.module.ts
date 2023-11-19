@@ -14,7 +14,7 @@ import { LoginService } from "app/services/login.service";
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { RouteGuard } from 'app/security/route.guard';
 import { LeaveRouterGuard } from '../../components/order/leave-router.guard';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';,
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { Interceptor } from 'app/security/interceptor';

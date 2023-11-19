@@ -9,6 +9,8 @@ const CategoryModel = require('./src/models/Category');
 const SubcategoryModel = require('./src/models/Subcategory');
 const DeliverymanModel = require('./src/models/Deliveryman');
 const MenuModel = require('./src/models/Menu');
+const UserModel = require('./src/models/User');
+const RoleModel = require('./src/models/Role');
 
 const app = express()
 const port = 3000

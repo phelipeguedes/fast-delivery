@@ -16,16 +16,16 @@ export class LoginService {
   user: User;
   lastUrl: string;
 
-  constructor(private http: HttpClient, private router: Router) { 
-    
+  constructor(private http: HttpClient, private router: Router) {
+
     /* última url visitada, é utilizada para quando entrar e sair da aplicação */
     this.router.events.filter(event => event instanceof NavigationEnd)
                       .subscribe((event: NavigationEnd) => this.lastUrl = event.url);
   }
 
-  login(username, password):Observable<User> {
-        return this.http.post<User>(`${API_FAST}/login`, {
-              username: username,
+  login(email: string, password: string):Observable<any> {
+        return this.http.post<any>(`${API_FAST}/login`, {
+              email: email,
               password: password
         })
         .do(user => this.user = user); // usuário logado
@@ -36,7 +36,7 @@ export class LoginService {
     if(!this.user) {
       return undefined
     }
-      
+
     return this.user;
   }
 
